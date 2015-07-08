@@ -4,6 +4,14 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.PointF;
 import android.graphics.RectF;
+import com.chengzhang.mupdfreader.app.constants.WidgetType;
+import com.chengzhang.mupdfreader.app.model.MuPDFAlert;
+import com.chengzhang.mupdfreader.app.model.MuPDFAlertInternal;
+import com.chengzhang.mupdfreader.app.model.OutlineItem;
+import com.chengzhang.mupdfreader.app.ui.PassClickResult;
+import com.chengzhang.mupdfreader.app.ui.PassClickResultChoice;
+import com.chengzhang.mupdfreader.app.ui.PassClickResultSignature;
+import com.chengzhang.mupdfreader.app.ui.PassClickResultText;
 
 import java.util.ArrayList;
 
