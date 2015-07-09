@@ -202,6 +202,12 @@ public class MuPDFCore {
         this.pageWidth = getPageWidth();
         this.pageHeight = getPageHeight();
     }
+    public float getPageW(){
+        return pageWidth;
+    }
+    public float getpageH(){
+        return pageHeight;
+    }
 
     public synchronized PointF getPageSize(int page) {
         gotoPage(page);

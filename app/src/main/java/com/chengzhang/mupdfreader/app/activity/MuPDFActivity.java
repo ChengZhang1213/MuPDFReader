@@ -17,6 +17,7 @@ import android.text.TextWatcher;
 import android.text.method.PasswordTransformationMethod;
 import android.view.KeyEvent;
 import android.view.Menu;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
@@ -32,6 +33,7 @@ import com.chengzhang.mupdfreader.app.thread.SearchTask;
 import com.chengzhang.mupdfreader.app.thread.SearchTaskResult;
 import com.chengzhang.mupdfreader.app.thread.ThreadPerTaskExecutor;
 import com.chengzhang.mupdfreader.app.ui.*;
+import com.chengzhang.mupdfreader.app.utils.SignatureUtil;
 
 import java.io.InputStream;
 
@@ -434,6 +436,16 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
                         break;
                 }
             }
+
+            @Override
+            public void onLongPress(MotionEvent e) {
+                //super.onLongPress(e);
+                float x = e.getX();
+                float y = e.getY();
+                SignatureUtil signatureUtil = new SignatureUtil(MuPDFActivity.this,core);
+                signatureUtil.signPDFWithWritePad(x,y);
+                System.out.println("----------x="+x+" y="+y);
+            }
         };
         mDocView.setAdapter(new MuPDFPageAdapter(this, this, core));
 
@@ -655,7 +667,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
             SharedPreferences prefs = getPreferences(Context.MODE_PRIVATE);
             SharedPreferences.Editor edit = prefs.edit();
             edit.putInt("page" + mFileName, mDocView.getDisplayedViewIndex());
-            edit.commit();
+            edit.apply();
         }
 
         if (!mButtonsVisible)
@@ -679,7 +691,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
             SharedPreferences prefs = getPreferences(Context.MODE_PRIVATE);
             SharedPreferences.Editor edit = prefs.edit();
             edit.putInt("page" + mFileName, mDocView.getDisplayedViewIndex());
-            edit.commit();
+            edit.apply();
         }
     }
 
