@@ -48,21 +48,23 @@ public class SignatureUtil {
         int bottomY = heightPixels - topY;
         if (y > topY && y < bottomY) {
             try {
-                String srcPath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/Download/DngNoiseModel.pdf";
-                String desPath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/Download/DngNoiseModel_1.pdf";
+                String srcPath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/Download/do.pdf";
+                String desPath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/Download/do_1.pdf";
                 String keyStorePath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/Download/test443_sign.pfx";
                 String keyStorePassword = "";
                 String keyPassword = "";
+                //fixme judge the file is exists
                 PdfReader reader = new PdfReader(srcPath);
                 Rectangle pageSize = reader.getPageSize(1);
                 float top = pageSize.getTop();
                 float right = pageSize.getRight();
-                Image image = Image.getInstance(Environment.getExternalStorageDirectory().getAbsolutePath() + "/Download/signTest1.png");
+                Image image = Image.getInstance(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES).getAbsolutePath() + "/SignaturePad/signTest1.png");
                 float imageWidth = image.getWidth();
                 float imageHeight = image.getHeight();
                 int transX = (int) (x * right / widthPixels);
                 int transY = (int) ((heightPixels - y) * top / heightPixels);
-                Rectangle rectangle = new Rectangle(transX - imageWidth / 4, transY - imageHeight / 4, transX - imageWidth / 4, transY + imageHeight / 4);
+               // Rectangle rectangle = new Rectangle(transX - imageWidth / 4, transY - imageHeight / 4, transX - imageWidth / 4, transY + imageHeight / 40);
+                Rectangle rectangle = new Rectangle(100,100,0,0);
                 KeyStore keyStore = KeyStore.getInstance("pkcs12", "BC");
                 keyStore.load(new FileInputStream(keyStorePath), keyStorePassword.toCharArray());
                 String aliases = keyStore.aliases().nextElement();

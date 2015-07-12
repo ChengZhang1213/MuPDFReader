@@ -15,10 +15,7 @@ import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.text.method.PasswordTransformationMethod;
-import android.view.KeyEvent;
-import android.view.Menu;
-import android.view.MotionEvent;
-import android.view.View;
+import android.view.*;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
 import android.view.inputmethod.EditorInfo;
@@ -442,8 +439,11 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
                 //super.onLongPress(e);
                 float x = e.getX();
                 float y = e.getY();
-                SignatureUtil signatureUtil = new SignatureUtil(MuPDFActivity.this,core);
-                signatureUtil.signPDFWithWritePad(x,y);
+                //SignatureUtil signatureUtil = new SignatureUtil(MuPDFActivity.this,core);
+                SignatureDialog signatureDialog = new SignatureDialog(MuPDFActivity.this,x,y,core);
+                signatureDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                signatureDialog.show();
+                //signatureUtil.signPDFWithWritePad(x,y);
                 System.out.println("----------x="+x+" y="+y);
             }
         };

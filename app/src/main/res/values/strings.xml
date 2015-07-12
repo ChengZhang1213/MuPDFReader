@@ -53,5 +53,7 @@
     <string name="copy_text">copy text</string>
     <string name="format_currently_not_supported">Format currently not supported</string>
     <string name="toggle_reflow_mode">Toggle reflow mode</string>
+    <string name="sign">签名</string>
+    <string name="clear">清除</string>
 
 </resources>
